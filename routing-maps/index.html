@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Route Planner – Interactive Maps</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root{--bg:#0f172a;--card:#111827;--text:#e5e7eb;--muted:#9ca3af;--accent:#22c55e;--accent2:#3b82f6}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;background:linear-gradient(120deg,#0b1220,#0f172a)}
+    .wrap{max-width:960px;margin:60px auto;padding:0 20px}
+    .title{color:#fff;font-size:28px;margin:0 0 8px}
+    .sub{color:var(--muted);margin:0 0 24px}
+    .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+    .card{background:var(--card);border:1px solid #1f2937;border-radius:16px;padding:16px;box-shadow:0 4px 18px rgba(0,0,0,.35)}
+    .card h3{color:var(--text);margin:0 0 10px;font-size:18px}
+    .meta{color:var(--muted);font-size:14px;margin-bottom:12px}
+    .btn{display:inline-block;text-decoration:none;color:#111;background:var(--accent);padding:10px 14px;border-radius:10px;font-weight:600}
+    .btn.secondary{background:var(--accent2);color:#fff}
+    .totals{margin-top:24px;color:var(--text);font-size:16px}
+    .footer{margin-top:40px;color:var(--muted);font-size:13px}
+    @media (max-width:820px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1 class="title">Route Planner – Interactive Maps</h1>
+    <p class="sub">Click a card to open the live, interactive map. Use zoom and pan to explore each route.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Vehicle 1 Route</h3>
+        <p class="meta">Interactive OSRM map with turn-by-turn geometry.</p>
+        <a class="btn" href="route_maps/vehicle_1.html" target="_blank" rel="noopener">Open map</a>
+      </div>
+
+      <div class="card">
+        <h3>Vehicle 2 Route</h3>
+        <p class="meta">Interactive OSRM map with turn-by-turn geometry.</p>
+        <a class="btn" href="route_maps/vehicle_2.html" target="_blank" rel="noopener">Open map</a>
+      </div>
+
+      <div class="card">
+        <h3>Combined Map</h3>
+        <p class="meta">Both routes overlaid with color-coded arrows.</p>
+        <a class="btn secondary" href="route_maps/routes_combined.html" target="_blank" rel="noopener">Open map</a>
+      </div>
+    </div>
+
+    <div class="totals" id="totals">
+      <!-- Optional totals (fill the variables below) -->
+    </div>
+
+    <p class="footer">
+      Data source: OpenStreetMap via OSRM • Rendered with Folium • Optimized with Google OR-Tools
+    </p>
+  </div>
+
+  <script>
+    // Optional: show totals on the front page
+    // Fill these with the totals your Python script prints
+    const totMin = null; // e.g. 1559.8
+    const totKm  = null; // e.g. 1058.7
+
+    if (totMin !== null && totKm !== null) {
+      const el = document.getElementById('totals');
+      el.textContent = `Total time: ${totMin.toFixed(1)} min • Total distance: ${totKm.toFixed(1)} km`;
+    }
+  </script>
+</body>
+</html>
